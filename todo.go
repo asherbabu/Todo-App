@@ -3,14 +3,12 @@ package todoapp
 import (
 	"errors"
 	"time"
-
-	"golang.org/x/text"
 )
 
 type item struct {
-	Task string
-	Done bool
-	CreatedAt time.Time
+	Task        string
+	Done        bool
+	CreatedAt   time.Time
 	CompletedAt time.Time
 }
 
@@ -18,19 +16,19 @@ type Todos []items
 
 func (t *Todos) Add(task string) {
 	todo := item{
-		Task: task,
-		Done: false,
-		CreatedAt: time.Now(),
+		Task:        task,
+		Done:        false,
+		CreatedAt:   time.Now(),
 		CompletedAt: time.Time{},
 	}
 
 	*t = append(*t, todo)
 }
 
-func (t *Todos) Complete(index int){
+func (t *Todos) Complete(index int) {
 	ls := *t
-	if index <=0 \\ index >len(ls){
-		return errors.New(text: "Ivalid Index")
+	if index <= 0 || index > len(ls) {
+		return errors.New("invalid index")
 	}
 
 	ls[index-1].CompletedAt = time.Now()
@@ -39,3 +37,6 @@ func (t *Todos) Complete(index int){
 	return nil
 }
 
+func (t *Todos) Delete(index int) error {
+
+}
