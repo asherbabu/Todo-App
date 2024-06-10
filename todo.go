@@ -1,6 +1,7 @@
 package todoapp
 
 import (
+	"encoding/json"
 	"errors"
 	"io/ioutil"
 	"os"
@@ -50,7 +51,7 @@ func (t *Todos) Delete(index int) error {
 	return nil
 }
 
-/*func (t *Todos) Load(filename string) error{
+func (t *Todos) Load(filename string) error{
 	file, err := ioutil.ReadFile(filename)
 	if err != nil {
 		if errors.Is(err, os.ErrNotExist){
@@ -62,6 +63,10 @@ func (t *Todos) Delete(index int) error {
 	if len(file) == 0{
 		return err
 	}
+	err = json.Unmarshal(file, t)
+	if err != nil{
+		return err
+	}
 
-
+	return nil
 }
