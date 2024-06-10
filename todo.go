@@ -6,6 +6,7 @@ import (
 	"io/ioutil"
 	"os"
 	"time"
+	"fmt"
 )
 
 type item struct {
@@ -79,4 +80,11 @@ func (t *Todos) Store(filename string) error {
 	}
 
 	return ioutil.WriteFile(filename, data, 0644)
+}
+
+func (t *Todos) Print(){
+	for i, item := range *t {
+		i++
+		fmt.Printf("%d - %s\n", i, item.Task)
+	}
 }
