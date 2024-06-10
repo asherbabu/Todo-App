@@ -2,6 +2,8 @@ package todoapp
 
 import (
 	"errors"
+	"io/ioutil"
+	"os"
 	"time"
 )
 
@@ -12,7 +14,7 @@ type item struct {
 	CompletedAt time.Time
 }
 
-type Todos []items
+type Todos []item
 
 func (t *Todos) Add(task string) {
 	todo := item{
@@ -25,7 +27,7 @@ func (t *Todos) Add(task string) {
 	*t = append(*t, todo)
 }
 
-func (t *Todos) Complete(index int) {
+func (t *Todos) Complete(index int) error{
 	ls := *t
 	if index <= 0 || index > len(ls) {
 		return errors.New("invalid index")
@@ -38,5 +40,28 @@ func (t *Todos) Complete(index int) {
 }
 
 func (t *Todos) Delete(index int) error {
+	ls := *t
+	if index <= 0 || index > len(ls){
+		return errors.New("invalid index")
+	}
+
+	*t = append(ls[:index-1], ls[index:]...)
+
+	return nil
+}
+
+/*func (t *Todos) Load(filename string) error{
+	file, err := ioutil.ReadFile(filename)
+	if err != nil {
+		if errors.Is(err, os.ErrNotExist){
+			return nil
+		}
+		return err
+	}
+
+	if len(file) == 0{
+		return err
+	}
+
 
 }
