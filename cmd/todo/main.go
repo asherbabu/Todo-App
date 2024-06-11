@@ -4,6 +4,10 @@ import (
 	"flag"
 	"fmt"
 	"os"
+	"io"
+	"errors"
+	"bufio"
+	"strings"
 
 	todoapp "github.com/asherbabu/Todo-App.git"
 )
@@ -90,7 +94,7 @@ func getInput(r io.Reader, args ...string) (string, error){
 	text := scanner.Text()
 
 	if len(text) == 0{
-		return "", erros.New("empty todo is not allowed")
+		return "", errors.New("empty todo is not allowed")
 	}
 
 	return text, nil
