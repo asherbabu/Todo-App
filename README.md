@@ -1,17 +1,20 @@
 # Todo-App
 
-A command line based Todo Application built in Go
+**A command line based Todo Application built in Go**
+
+
 
 Operating System Used = Kali Linux
-Tools Used = Github, VsCode
+
+Tools Used = Github, VsCode, VM Virtual Box
 
 Recommended to use any Linux based OS
 
-References:
+**References:**
 1. Youtube Video: https://youtu.be/j1CXoOQXbco?si=XeJJHyJ0PSyVA9E6
 2. Github: https://github.com/alexeyco/simpletable (Table Styling)
 
-Commands:
+**Commands:**
 
 1. Adding a new todo
    ./todo -add task
