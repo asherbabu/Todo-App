@@ -7,7 +7,7 @@ const(
 
 	ColorRed = "\x1b[91m"
 	ColorGreen = "\x1b[32m"
-	ColorBlue = "\x1b94m"
+	ColorBlue = "\x1b[94m"
 	ColorGray = "\x1b[90m"
 )
 
