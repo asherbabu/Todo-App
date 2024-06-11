@@ -108,4 +108,14 @@ func (t *Todos) Print(){
 			{Text: item.CompletedAt.Format(time.RFC822)},
 		})
 	}
+
+	table.Body = &simpletable.Body{Cells: cells}
+	table.Footer = &simpletable.Footer{Cells: []*simpletable.Cell{
+		{Align: simpletable.AlignCenter, Span: 5, Text: "Your todos are here"},
+	}}
+
+	table.SetStyle(simpletable.StyleUnicode)
+
+	table.Println()
+
 }
