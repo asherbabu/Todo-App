@@ -115,11 +115,23 @@ func (t *Todos) Print(){
 
 	table.Body = &simpletable.Body{Cells: cells}
 	table.Footer = &simpletable.Footer{Cells: []*simpletable.Cell{
-		{Align: simpletable.AlignCenter, Span: 5, Text: "Your todos are here"},
+		{Align: simpletable.AlignCenter, Span: 5, Text: red(fmt.Sprintf("You have %d pending todos", t.CountPending()))},
 	}}
 
 	table.SetStyle(simpletable.StyleUnicode)
 
 	table.Println()
 
+}
+
+
+func (t *Todos) CountPending() int{
+	total := 0
+	for _, item := range *t{
+		if !item.Done{
+			total++
+		}
+	}
+
+	return total
 }
